@@ -14,9 +14,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision "shell", inline: "librarian-puppet install --verbose"
 
   config.vm.provision "puppet" do |puppet|
-    puppet.manifest_file  = "default.pp"
     puppet.manifests_path = "puppet/manifests"
     puppet.module_path    = "puppet/modules"
+    puppet.manifest_file  = "site.pp"
   end
 
   config.vm.provider "vmware_fusion" do |v|
