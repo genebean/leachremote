@@ -9,10 +9,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.hostname = "leachremote"
 
+  # Install Puppet and needed modules
   config.vm.provision "shell", path:   "scripts/puppet.sh"
-  config.vm.provision "shell", inline: "gem install librarian-puppet"
-  config.vm.provision "shell", inline: "librarian-puppet install --verbose"
+  config.vm.provision "shell", path:   "scripts/puppet-modules.sh"
 
+  # Configure the VM
   config.vm.provision "puppet" do |puppet|
     puppet.manifests_path = "puppet/manifests"
     puppet.module_path    = "puppet/modules"

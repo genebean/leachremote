@@ -2,24 +2,28 @@
 
 node 'leachremote' {
   class { 'apache':
-    default_mods  => false,
-    default_vhost => false,
+    default_mods   => false,
+    default_vhost  => false,
   }
+
+  apache::mod { 'dir': }
 
   apache::vhost { $::fqdn:
-    port          => '80',
-    docroot       => '/var/www/www-files',
-    require       => File['/var/www/www-files'],
-  }
+    directoryindex => ['index.html'],
+    docroot        => '/var/www/www-files',
+    port           => '80',
+    priority       => '00',
 
-  file { '/var/www':
-    ensure        => link,
-    target        => '/vagrant',
-    force         => true,
+    require        => File['/var/www/www-files'],
   }
 
   file { '/var/www/www-files':
-    ensure        => directory,
-    require       => File['/var/www'],
+    ensure         => link,
+    target         => '/vagrant/www-files',
+  }
+
+  $utility_packages = [ 'multitail', 'vim-enhanced' ]
+  package { $utility_packages:
+    ensure         => installed,
   }
 }
