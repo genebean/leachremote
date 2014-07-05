@@ -1,2 +1,2 @@
-.tmp/
-modules/
+puppet/modules/
+puppet/.tmp/

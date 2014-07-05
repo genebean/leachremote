@@ -9,10 +9,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.hostname = "leachremote"
 
-  config.vm.provision "shell", path: "scripts/puppet.sh"
+  config.vm.provision "shell", path:   "scripts/puppet.sh"
+  config.vm.provision "shell", inline: "gem install librarian-puppet"
+  config.vm.provision "shell", inline: "librarian-puppet install --verbose"
 
   config.vm.provision "puppet" do |puppet|
-    puppet.module_path = "modules"
+    puppet.manifest_file  = "default.pp"
+    puppet.manifests_path = "puppet/manifests"
+    puppet.module_path    = "puppet/modules"
   end
 
   config.vm.provider "vmware_fusion" do |v|
@@ -27,5 +31,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # within the machine from a port on the host machine. In the example below,
   # accessing "localhost:8080" will access port 80 on the guest machine.
   # config.vm.network "forwarded_port", guest: 80, host: 8080
+  config.vm.network "forwarded_port", guest: 80,  host: 8080
+  config.vm.network "forwarded_port", guest: 443, host: 8443
 
 end
