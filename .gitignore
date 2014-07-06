@@ -1,2 +1,4 @@
-puppet/modules/
+puppet/modules/*
+!puppet/modules/.gitkeep
+puppet/modules/*/
 .vagrant/
