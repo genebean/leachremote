@@ -6,7 +6,9 @@ node 'leachremote' {
     default_vhost  => false,
   }
 
-  apache::mod { 'dir': }
+  apache::mod::dir
+  apache::mod::mpm_module
+  apache::mod::php
 
   apache::vhost { $::fqdn:
     directoryindex => ['index.html'],
