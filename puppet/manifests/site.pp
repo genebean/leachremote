@@ -4,11 +4,13 @@ node 'leachremote' {
   class { 'apache':
     default_mods   => false,
     default_vhost  => false,
+    mpm_module     => 'prefork',
   }
 
-  apache::mod { 'dir': }
+  include apache::mod::dir
+  include apache::mod::php
 
-  apache::vhost { $::fqdn:
+  apache::vhost { 'leachremote':
     directoryindex => ['index.html'],
     docroot        => '/var/www/www-files',
     port           => '80',
