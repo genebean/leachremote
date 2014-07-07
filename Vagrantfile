@@ -24,7 +24,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     v.gui = false
   end
 
-  config.vm.provider "virtaulbox" do |v|
+  config.vm.provider "virtualbox" do |v|
     v.gui = false
   end
 
