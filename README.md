@@ -12,7 +12,7 @@ Arduino-based TV remote running WebRemote.
 
 The first time you pull the application up on a device you will need to scroll
 to the bottom and enter some information about your device running WebRemote.
-This informaiton will be save in a cookie so that you don't have to enter it
+This information will be saved in a cookie, so that you don't have to enter it
 every time.
 
 ## Installing on webserver
