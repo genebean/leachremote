@@ -15,6 +15,13 @@ to the bottom and enter some information about your device running WebRemote.
 This information will be saved in a cookie, so that you don't have to enter it
 every time.
 
+## Requirements
+
+You will need a webserver such as Apache or Nginx along with support for the following:  
+* JavaScript
+* PHP support - needed for hookreader.php only  
+* Git - needed for doing manual clones / pulls and used by hookreader.php  
+
 ## Installing on webserver
 
 ```sh
@@ -22,6 +29,9 @@ git clone https://github.com/genebean/leachremote.git leachremote
 cd leachremote
 ln -s www-files /path/to/document-root
 ```
+
+If using webhooks for deployment then you need to also 
+`mv hookreader.ini.example hookreader.ini` and edit it accordingly.
 
 ## Installing for development / testing
 

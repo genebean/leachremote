@@ -2,3 +2,4 @@ puppet/modules/*
 !puppet/modules/.gitkeep
 puppet/modules/*/
 .vagrant/
+hookreader.ini
